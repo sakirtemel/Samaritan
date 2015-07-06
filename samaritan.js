@@ -5,7 +5,8 @@ $State = {
     randomInterval: 18000,
     lastRandomIndex: -1,
     randomTimer: null,
-    lastMouseUp: -1
+    lastMouseUp: -1,
+	blinkCountAfterText: 0
 };
 
 // From Stack Overflow
@@ -100,7 +101,11 @@ var blinkTriangle = function()
     // Stop blinking if samaritan is in action
     if ($State.isText)
         return;
-    $State.triangle.fadeTo(500, 0).fadeTo(500, 1, blinkTriangle);
+
+	if ( $State.blinkCountAfterText !== 0){
+		$State.blinkCountAfterText--;
+	    $State.triangle.fadeTo(500, 1).fadeTo(500, 0, blinkTriangle);		
+	}
 }
 
 var runRandomPhrase = function()
@@ -133,7 +138,7 @@ var executeSamaritan = function(phrase)
     // scale down the marker triangle
     $State.triangle.finish().animate({
         'font-size': '0em',
-        'opacity': '1'
+        'opacity': '0'
     }, {
         'duration': $State.wordAnim,
         // Once animation triangle scale down is complete...
@@ -167,7 +172,7 @@ var executeSamaritan = function(phrase)
                 // Animate trinagle back in
                 $State.triangle.finish().animate({
                     'font-size': '2em',
-                    'opacity': '1'
+                    'opacity': '0'
                 }, {
                     'duration': $State.wordAnim,
                     // Once complete, blink the triangle again and animate the line to original size
@@ -175,6 +180,7 @@ var executeSamaritan = function(phrase)
                         $State.isText = false;
                         randomTimePhrase();
 
+						$State.blinkCountAfterText = Math.floor(Math.random() * 4) + 2;
                         blinkTriangle();
                         $State.line.animate({
                             'width' : "30px"

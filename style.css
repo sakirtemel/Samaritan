@@ -48,6 +48,7 @@ p {
     color: #F00;
     font-size: 2em;
     font-family: "magdacleanmono";
+	opacity: 0;
 }
 
 #settings {
