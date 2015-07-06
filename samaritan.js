@@ -137,8 +137,8 @@ var executeSamaritan = function(phrase)
     // First, finish() the blink animation and
     // scale down the marker triangle
     $State.triangle.finish().animate({
-        'font-size': '0em',
-        'opacity': '0'
+        'font-size': '2em',
+        'opacity': '1'
     }, {
         'duration': $State.wordAnim,
         // Once animation triangle scale down is complete...
@@ -172,7 +172,7 @@ var executeSamaritan = function(phrase)
                 // Animate trinagle back in
                 $State.triangle.finish().animate({
                     'font-size': '2em',
-                    'opacity': '0'
+                    'opacity': '1'
                 }, {
                     'duration': $State.wordAnim,
                     // Once complete, blink the triangle again and animate the line to original size
@@ -180,7 +180,7 @@ var executeSamaritan = function(phrase)
                         $State.isText = false;
                         randomTimePhrase();
 
-						$State.blinkCountAfterText = Math.floor(Math.random() * 4) + 2;
+						$State.blinkCountAfterText = Math.floor(Math.random() * 5) + 3;
                         blinkTriangle();
                         $State.line.animate({
                             'width' : "30px"
