@@ -23,7 +23,7 @@ p {
     position: absolute;
     display: block;
     width: 100%;
-    bottom: 50%;
+    bottom: 20%;
 }
 #main hr {
     width: 30px; /* default initial size */
@@ -41,7 +41,7 @@ p {
     position: absolute;
     display: block;
     width: 100%;
-    top: 50%;
+    top: 80%;
     vertical-align: top;
 }
 #triangle {
